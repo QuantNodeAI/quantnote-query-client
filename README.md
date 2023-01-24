@@ -11,7 +11,6 @@
 <summary>Click to expand!</summary>
 
 - [Description](#description)
-- [Features](#features)
 - [Usage](#usage)
 - [License](#license)
 </details>
