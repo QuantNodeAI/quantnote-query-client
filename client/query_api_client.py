@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 from json import dumps
 from client.response_model import QueryResponse
-from tqdm.auto import tqdm, trange
+from tqdm.auto import trange
 
 client_logger = logging.getLogger("query_api")
 
@@ -48,7 +48,7 @@ class HelixirQueryApi:
 
         resp = QueryResponse.from_json(response_data)
         get_url = "{url}/{query_id}".format(url=self.api_server, query_id=resp.id)
-        max_iteration = int(self.timeout * (1/self.DEFAULT_WAIT_TIME))
+        max_iteration = int(self.timeout * (1 / self.DEFAULT_WAIT_TIME))
         for i in trange(max_iteration, leave=False, desc="Waiting for response till limit"):
             response = self._session.get(url=get_url)
             response_data = response.json()
