@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 from json import dumps
 from client.response_model import QueryResponse
+from tqdm.auto import tqdm, trange
 
 client_logger = logging.getLogger("query_api")
 
@@ -14,9 +15,10 @@ class HelixirQueryApi:
     DEFAULT_API_SERVER = "https://auth.helixir.ai/api"
     API_VERSION = "v1"
     APPLICATION_NAME = "HelixirDefaultClient"
+    DEFAULT_WAIT_TIME = 0.5
 
     def __init__(self, auth_token: str, api_server: str = DEFAULT_API_SERVER, api_version: str = API_VERSION,
-                 timeout: float = 60):
+                 timeout: float = 300):
         self.auth_token = auth_token
         self.headers = {
             "Content-Type": "application/json",
@@ -46,7 +48,8 @@ class HelixirQueryApi:
 
         resp = QueryResponse.from_json(response_data)
         get_url = "{url}/{query_id}".format(url=self.api_server, query_id=resp.id)
-        while resp.loading:
+        max_iteration = int(self.timeout * (1/self.DEFAULT_WAIT_TIME))
+        for i in trange(max_iteration, leave=False, desc="Waiting for response till limit"):
             response = self._session.get(url=get_url)
             response_data = response.json()
             response.raise_for_status()
@@ -56,9 +59,12 @@ class HelixirQueryApi:
 
             resp = QueryResponse.from_json(response_data)
             if resp.loading:
-                time.sleep(0.5)
+                time.sleep(self.DEFAULT_WAIT_TIME)
             elif resp.error != "":
                 client_logger.error("[HelixirQueryApi._handle_response] get -> error: {}".format(resp.error))
+                break
+            else:
+                break
 
         return resp
 
