@@ -19,7 +19,7 @@ AUTH_TOKEN=<your_authorization_token>
 - [**Open Interest**](open_interest.ipynb)
     - Downloading and plotting Binance open interest data
 - [**Telegram Activity**](telegram_activity.ipynb)
-    - Get and plot telegram activity for given tag (token) with its price as well
+    - Get and plot telegram activity and sentiment for given tag (token) with its price as well
 - [**Tokens By Liquidity**](tokens_by_liquidity.ipynb)
     - Get tokens by its liquidity against the biggest tokens (WETH, USDT, USDC) on ETH
 - [**Topics**](topics.ipynb)
