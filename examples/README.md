@@ -24,3 +24,5 @@ AUTH_TOKEN=<your_authorization_token>
     - Get tokens by its liquidity against the biggest tokens (WETH, USDT, USDC) on ETH
 - [**Topics**](topics.ipynb)
     - Obtaining trending topics at the moment
+- [**WordCloud**](wordcloud.ipynb)
+    - Get Word clouds (most frequent words) for Social and News articles
