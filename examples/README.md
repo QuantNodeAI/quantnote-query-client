@@ -26,3 +26,5 @@ AUTH_TOKEN=<your_authorization_token>
     - Obtaining trending topics at the moment
 - [**WordCloud**](wordcloud.ipynb)
     - Get Word clouds (most frequent words) for Social and News articles
+- [**Portfolio**](portfolio.ipynb)
+    - Get portfolio for given wallet
