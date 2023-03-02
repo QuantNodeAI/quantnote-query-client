@@ -12,7 +12,7 @@ client_logger = logging.getLogger("query_api")
 
 
 class HelixirQueryApi:
-    DEFAULT_API_SERVER = "https://auth.helixir.ai/api"
+    DEFAULT_API_SERVER = "https://api.helixir.io"
     API_VERSION = "v1"
     APPLICATION_NAME = "HelixirDefaultClient"
     DEFAULT_WAIT_TIME = 0.5
