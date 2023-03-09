@@ -1,13 +1,12 @@
-import os.path
-from pathlib import Path
+import os
 
 import plotly.graph_objects as go
 import plotly.io as pio
 from PIL import Image
 
-current_dir = Path(__file__)
-project_dir = [p for p in current_dir.parents if p.parts[-1] == 'query-api-quantnote_query_api'][0]
-logo_path = os.path.join(project_dir, "examples/quantnote_template/quantnote.png")
+absolute_path = os.path.dirname(__file__)
+relative_path = "quantnote.png"
+logo_path = os.path.join(absolute_path, relative_path)
 pyLogo = Image.open(logo_path)
 
 pio.templates["quantnote"] = go.layout.Template(
