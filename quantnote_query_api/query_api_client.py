@@ -5,7 +5,7 @@ from typing import Optional
 import pandas as pd
 import requests
 from json import dumps
-from client.response_model import QueryResponse
+from quantnote_query_api.response_model import QueryResponse
 from tqdm.auto import trange
 
 client_logger = logging.getLogger("query_api")

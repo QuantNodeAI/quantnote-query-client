@@ -2,7 +2,7 @@ import os
 
 import dotenv
 
-from client.query_api_client import QuantNoteQueryApi
+from quantnote_query_api.query_api_client import QuantNoteQueryApi
 
 dotenv.load_dotenv(".env")
 if __name__ == '__main__':
