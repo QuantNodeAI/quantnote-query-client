@@ -11,10 +11,10 @@ from tqdm.auto import trange
 client_logger = logging.getLogger("query_api")
 
 
-class HelixirQueryApi:
+class QuantNoteQueryApi:
     DEFAULT_API_SERVER = "https://api.helixir.io"
     API_VERSION = "v1"
-    APPLICATION_NAME = "HelixirDefaultClient"
+    APPLICATION_NAME = "QuantNoteDefaultClient"
     DEFAULT_WAIT_TIME = 0.5
 
     def __init__(self, auth_token: str, api_server: str = DEFAULT_API_SERVER, api_version: str = API_VERSION,
@@ -43,7 +43,7 @@ class HelixirQueryApi:
         response_data = response.json()
 
         if response_data == "" or response_data is None:
-            client_logger.warning("[HelixirQueryApi._handle_response] post -> desired data are empty.")
+            client_logger.warning("[QuantNoteQueryApi._handle_response] post -> desired data are empty.")
             return None
 
         resp = QueryResponse.from_json(response_data)
@@ -54,14 +54,14 @@ class HelixirQueryApi:
             response_data = response.json()
             response.raise_for_status()
             if response_data == "" or response_data is None:
-                client_logger.warning("[HelixirQueryApi._handle_response] get -> desired data are empty.")
+                client_logger.warning("[QuantNoteQueryApi._handle_response] get -> desired data are empty.")
                 return None
 
             resp = QueryResponse.from_json(response_data)
             if resp.loading:
                 time.sleep(self.DEFAULT_WAIT_TIME)
             elif resp.error != "":
-                client_logger.error("[HelixirQueryApi._handle_response] get -> error: {}".format(resp.error))
+                client_logger.error("[QuantNoteQueryApi._handle_response] get -> error: {}".format(resp.error))
                 break
             else:
                 break

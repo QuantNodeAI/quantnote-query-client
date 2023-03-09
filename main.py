@@ -2,12 +2,12 @@ import os
 
 import dotenv
 
-from client.query_api_client import HelixirQueryApi
+from client.query_api_client import QuantNoteQueryApi
 
 dotenv.load_dotenv(".env")
 if __name__ == '__main__':
     AUTH_TOKEN = os.getenv("AUTH_TOKEN")
-    client = HelixirQueryApi(auth_token=AUTH_TOKEN)
+    client = QuantNoteQueryApi(auth_token=AUTH_TOKEN)
     query = """SELECT *
     FROM studies.helixir.events
     WHERE event_type = 'listing'
